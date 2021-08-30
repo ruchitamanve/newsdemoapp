@@ -32,7 +32,7 @@ class _NewsHeadlinesPageState extends State<NewsHeadlinesPage>
   var _msg;
   @override
   void initState() {
-    _dbapicall();
+    _apicall();
     super.initState();
   }
 
@@ -41,10 +41,8 @@ class _NewsHeadlinesPageState extends State<NewsHeadlinesPage>
     return data;
   }
 
-  _dbapicall() {
-    getDbNewsData().then((value) async {
-      TopHeadlinesPresenter(this).loadHeadlineData(false);
-    });
+  _apicall() {
+    TopHeadlinesPresenter(this).loadHeadlineData(false);
   }
 
   _searchapicall() {
@@ -213,6 +211,7 @@ class _NewsHeadlinesPageState extends State<NewsHeadlinesPage>
       HeadlineListDBHelper().truncateTable();
       TopHeadlinesPresenter(this).loadHeadlineData(true);
     }
+    
   }
 
   Widget _newsList() {

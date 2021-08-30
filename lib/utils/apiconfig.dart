@@ -9,7 +9,7 @@ class Apiconfig {
   static Future<dynamic> getMethod(url, [header, params]) async {
     try {
       http.Response response = await http.get(
-        url,
+        Uri.parse(url),
         headers: header,
       );
 
@@ -30,9 +30,11 @@ class Apiconfig {
     final dbData = getHeadlinesfromDb().then((value) async {
       if (value.length > 0 && _refresh == false) {
         /* if data available in db */
+        print("dbbbbbbbbbbbbb");
         return TopHeadLineModel.fromJson(json.decode(value.last.listdata));
       } else {
         /*Api call */
+        print("get list api cakkkkkkkkk");
         final response = await getMethod(
             "https://newsapi.org/v2/top-headlines?country=us&apiKey=$_apiKey");
 
@@ -46,6 +48,7 @@ class Apiconfig {
 
 /*search Api*/
   Future<TopHeadLineModel> searchTopHeadlinesApi(searchText) async {
+    print("search api calllllllllll");
     final response = await getMethod(
         "https://newsapi.org/v2/everything?q=$searchText&apiKey=$_apiKey");
 

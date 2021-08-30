@@ -3,7 +3,6 @@ import 'package:topheadlinesdemo/news_headlines_page/headlines_page_design.dart'
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
   runApp(MyApp());
 }
 
